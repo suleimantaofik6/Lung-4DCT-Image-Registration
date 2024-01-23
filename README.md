@@ -33,16 +33,16 @@ Figure 3: Visualization of the Elastix Registration from COPD1
 ## Deep Learning Registration using Monai
 The script `deep_learning_registration/Deep_Learning_Registration_Monai.ipynb` contains the full deep learning implementation using several pretrained models in the following steps:
 
-### Data Preparation, and Custom Transforms for Landmarks
+### 1. Data Preparation, and Custom Transforms for Landmarks
 To address the data preparation challenge, we leveraged the already preprocessed images and devised a custom data loading function, get_files. This function efficiently loads images into training and validation sets, organizing them within a dictionary structure. Also, given that MONAI's transforms are primarily designed for images, with an emphasis on spatial transformations, especially rigid/affine or non linear transformations of voxel grids, adapting them for point clouds posed a unique challenge. To overcome this limitation, two custom classes was used: `LoadKeypoints` and `TransformKeypoints`. Figure 5 showcases an example visualization of images and their corresponding point clouds.
 
 ![Deep Visualization](figures/dl_data_vis.png "Visualization")
 Figure 4: Data visualization from the deep learning data and landmark loader
 
-### Hyperparameters and Loss Function 
+### 2. Hyperparameters and Loss Function 
 To define the hyperparameters and loss function, we created several functions. The `forward function` is responsible for the forward pass of the model. It predicts the Displacement Field (DDF) and warps the moving image based on the predicted DDF while the `collate _fn` function ensures that keypoints are aligned for easy collation during batch processing. The `tre function` computes the TRE loss between fixed and moving landmarks, and finally the `loss fun` function defines the multi target loss used for the model optimization.
 
-### Model Training and Prediction
+### 3. Model Training and Prediction
 The models trained are:
 * SegResNet
 * Vnet
