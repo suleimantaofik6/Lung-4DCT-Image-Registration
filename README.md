@@ -45,8 +45,6 @@ To define the hyperparameters and loss function, we created several functions. T
 ### 3. Model Training and Prediction
 The models trained are:
 * SegResNet
-* Vnet
-* Autoencoder
 * HighResNet
 
 The general steps involved model initialization, where we specify our pretrained models, and an optimization set up using Adam optimizer with cosine annealing learning rate scheduler. We then created the training and validation loop where the training and prediction is carried out using the TRE as the key loss and best model is saved to enable us to load the pretrained model at anytime to perform prediction. Figure 5 shows the result of the deep learning models using overlay. 
